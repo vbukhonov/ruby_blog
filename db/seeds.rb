@@ -14,7 +14,7 @@ user = User.create(
       password_confirmation: '12345'
     }
   ]
-)
+).first
 
 user.blogs.create(
   [
