@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
 
-  before_filter :authorize, only: %i[edit update destroy]
+  before_action :authorize, only: %i[edit update destroy]
 
   def index
     @blogs = Blog.all
