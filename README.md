@@ -1,30 +1,6 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
 This is a simple application with Blogs and Users.
+
+Heroku link - https://vbukhonov-ruby-blog.herokuapp.com/
 
 Before starting your work with it, you can first prepopulate DB with some 
 simple data. In order to do that, after you have run command:
