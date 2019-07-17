@@ -1,6 +1,6 @@
 <h1>Log In</h1>
 
-<%= form_with sessions_path do |form| %>
+<%= form_with url: sessions_path, local: true do |form| %>
   <div class="field">
     <%= form.label_tag :email %><br />
     <%= form.text_field_tag :email, params[:email] %>
