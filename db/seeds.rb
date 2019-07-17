@@ -5,3 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+user = User.create(
+  [
+    {
+      email: 'ruby_on_rails_blog_app@gmail.com',
+      password: '12345',
+      password_confirmation: '12345'
+    }
+  ]
+)
+
+user.blogs.create(
+  [
+    {
+      title: 'Blog 1',
+      text: 'Some text 1'
+    }
+  ]
+)
