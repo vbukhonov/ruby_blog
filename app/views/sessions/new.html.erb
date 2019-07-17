@@ -2,12 +2,12 @@
 
 <%= form_with url: sessions_path, local: true do |form| %>
   <div class="field">
-    <%= form.label_tag :email %><br />
-    <%= form.text_field_tag :email, params[:email] %>
+    <%= form.label :email %><br />
+    <%= form.text_field :email %>
   </div>
   <div class="field">
-    <%= form.label_tag :password %><br />
-    <%= form.password_field_tag :password %>
+    <%= form.label :password %><br />
+    <%= form.password_field :password %>
   </div>
   <div class="actions">
     <%= form.submit_tag "Log In" %>
