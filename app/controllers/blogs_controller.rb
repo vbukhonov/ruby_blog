@@ -12,6 +12,10 @@ class BlogsController < ApplicationController
     @blog = Blog.new
   end
 
+  def edit
+    @blog = Blog.find(params[:id])
+  end
+
   def create
     @blog = Blog.new(blog_params)
 
@@ -19,6 +23,16 @@ class BlogsController < ApplicationController
       redirect_to @blog
     else
       render 'new'
+    end
+  end
+
+  def update
+    @blog = Blog.find(params[:id])
+
+    if @blog.update(blog_params)
+      redirect_to @blog
+    else
+      render 'edit'
     end
   end
 

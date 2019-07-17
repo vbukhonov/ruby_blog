@@ -15,6 +15,7 @@
       <td><%= blog.title %></td>
       <td><%= blog.text %></td>
       <td><%= link_to 'Show', blog_path(blog) %></td>
+      <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
     </tr>
   <% end %>
 </table>
