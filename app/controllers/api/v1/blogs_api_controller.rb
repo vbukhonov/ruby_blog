@@ -5,16 +5,12 @@ module Api
         blogs = Blog.order('created_at DESC')
         render json: { status: 'SUCCESS',
                        message: 'Loaded blogs',
-                       user: @current_user,
-                       user_id: :user_id,
-                       session: session[:user_id],
-                       current_user: User.find(session[:user_id]),
                        data: blogs },
                status: :ok
       end
 
       def show
-        @blog = @current_user.blogs.find(params[:id])
+        @blog = current_api_user.blogs.find(params[:id])
         render json: { status: 'SUCCESS',
                        message: 'Loaded blog',
                        data: @blog },
@@ -22,7 +18,7 @@ module Api
       end
 
       def create
-        @blog = @current_user.blogs.create(blog_params)
+        @blog = current_api_user.blogs.create(blog_params)
         if @blog.save
           render json: @blog, status: :created, location: @blog
         else
@@ -31,7 +27,7 @@ module Api
       end
 
       def destroy
-        @blog = @current_user.blogs.find(params[:id])
+        @blog = current_api_user.blogs.find(params[:id])
         @blog.destroy
         render json: { status: 'SUCCESS',
                        message: 'Deleted blog',
@@ -40,7 +36,7 @@ module Api
       end
 
       def update
-        @blog = @current_user.blogs.find(params[:id])
+        @blog = current_api_user.blogs.find(params[:id])
         if @blog.update(blog_params)
           render json: { status: 'SUCCESS',
                          message: 'Updated blog',
@@ -58,6 +54,10 @@ module Api
 
       def blog_params
         params.permit(:title, :text)
+      end
+
+      def current_api_user
+        @current_api_user ||= User.find(session[:user_id]) if session[:user_id]
       end
 
     end
