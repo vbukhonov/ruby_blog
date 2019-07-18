@@ -13,6 +13,9 @@ module Api
         @blog = @current_user.blogs.find(params[:id])
         render json: { status: 'SUCCESS',
                        message: 'Loaded blog',
+                       user: @current_user,
+                       user_id: :user_id,
+                       session: session[:user_id],
                        data: @blog },
                status: :ok
       end
