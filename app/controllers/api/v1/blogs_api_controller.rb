@@ -8,6 +8,7 @@ module Api
                        user: @current_user,
                        user_id: :user_id,
                        session: session[:user_id],
+                       current_user: User.find(session[:user_id]),
                        data: blogs },
                status: :ok
       end
@@ -16,9 +17,6 @@ module Api
         @blog = @current_user.blogs.find(params[:id])
         render json: { status: 'SUCCESS',
                        message: 'Loaded blog',
-                       user: @current_user,
-                       user_id: :user_id,
-                       session: session[:user_id],
                        data: @blog },
                status: :ok
       end
