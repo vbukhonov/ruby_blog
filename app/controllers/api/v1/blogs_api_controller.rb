@@ -4,7 +4,7 @@ module Api
       def index
         blogs = Blog.order('created_at DESC')
         render json: { status: 'SUCCESS',
-                       message: 'Loaded articles',
+                       message: 'Loaded blogs',
                        data: blogs },
                status: :ok
       end
