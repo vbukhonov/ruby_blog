@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :blogs
-
+  namespace 'api' do
+    namespace 'v1' do
+      resources :blogs_api
+    end
+  end
   root 'welcome#index'
 end
