@@ -53,7 +53,7 @@ module Api
       private
 
       def blog_params
-        params.require(:blog).permit(:title, :text)
+        params.permit(:title, :text)
       end
 
     end
