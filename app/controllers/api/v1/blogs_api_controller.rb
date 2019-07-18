@@ -8,6 +8,54 @@ module Api
                        data: blogs },
                status: :ok
       end
+
+      def show
+        @blog = @current_user.blogs.find(params[:id])
+        render json: { status: 'SUCCESS',
+                       message: 'Loaded blog',
+                       data: @blog },
+               status: :ok
+      end
+
+      def create
+        @blog = @current_user.blogs.create(blog_params)
+        if @blog.save
+          render json: @blog, status: :created, location: @blog
+        else
+          render json: @blog.errors, status: :unprocessable_entity
+        end
+      end
+
+      def destroy
+        @blog = @current_user.blogs.find(params[:id])
+        @blog.destroy
+        render json: { status: 'SUCCESS',
+                       message: 'Deleted blog',
+                       data: @blog },
+               status: :ok
+      end
+
+      def update
+        @blog = @current_user.blogs.find(params[:id])
+        if @blog.update(blog_params)
+          render json: { status: 'SUCCESS',
+                         message: 'Updated blog',
+                         data: @blog },
+                 status: :ok
+        else
+          render json: { status: 'ERROR',
+                         message: 'Blog not updated',
+                         data: @blog.errors },
+                 status: :unprocessable_entity
+        end
+      end
+
+      private
+
+      def blog_params
+        params.require(:blog).permit(:title, :text)
+      end
+
     end
   end
 end
