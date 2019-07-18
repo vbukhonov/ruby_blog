@@ -5,6 +5,9 @@ module Api
         blogs = Blog.order('created_at DESC')
         render json: { status: 'SUCCESS',
                        message: 'Loaded blogs',
+                       user: @current_user,
+                       user_id: :user_id,
+                       session: session[:user_id],
                        data: blogs },
                status: :ok
       end
